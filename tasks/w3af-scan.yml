@@ -1,0 +1,16 @@
+---
+
+#- name: update default script target
+#  replace: dest=... regexp='http://moth/w3af/' replace='' backup=yes
+#  replace: dest=... regexp='output-w3af.txt' replace='' backup=yes
+
+- name: launch va scan with w3af
+  shell: "echo y | {{ w3af_installdir }}/w3af_console -s {{ w3af_installdir }}/scripts/{{ w3af_scan_script }}"
+
+- name: fetch files to orchestrator
+  fetch: "src={{ item }} dest={{ w3af_pulldir }}/"
+  with_items:
+    - "{{ w3af_scan_output_file }}"
+    - "/root/output-http.txt"
+  when: w3af_pull is defined and w3af_pull
+

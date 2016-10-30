@@ -1,0 +1,57 @@
+---
+
+- name: install w3af dependencies
+  package: name={{ item }} state=present update_cache=yes
+  with_items: "{{ w3af_deps_pkg }}"
+
+- name: git clone w3af
+  git: repo=https://github.com/andresriancho/w3af.git
+       dest="{{ w3af_installdir }}"
+       version="{{ w3af_release }}"
+       force=no
+       update=no
+
+### FIXME! next install still seems to install latest...
+#- name: force uninstall some pip modules to ensure correct version
+#  pip: name={{ item.p }} version={{ item.v }} state=absent
+#  with_items:
+#    - { p: PyOpenSSL, v: 16.1.0 }
+#    - { p: lxml, v: 3.6.4 }
+
+- name: check current pip version
+  command: "pip --version"
+  changed_when: false
+  register: pipv
+
+## does not seem to be handled well by ansible pip module
+- name: upgrade pip to latest
+  command: pip install --upgrade pip
+  when: pipv.stdout.find("8.1.2") == -1
+
+- name: push pip requirements.txt
+  template: src=requirements.txt.j2 dest={{ w3af_installdir }}/requirements.txt backup=yes
+- name: install w3af pip dependencies
+  pip: requirements={{ w3af_installdir }}/requirements.txt
+  register: out
+#- debug: var=out
+
+- name: check current pip packages
+  command: "pip freeze"
+  changed_when: false
+  register: pipl
+#- debug: var=pipl
+- name: (bad workaround) ensure correct version of some pip packages
+#  command: "pip install pyOpenSSL==0.13.1 lxml==2.3.2"
+  command: "pip install lxml==2.3.2"
+  when: pipl.stdout.find("lxml==2.3.2") == -1
+#  when: pipl.stdout.find("lxml==2.3.2") == -1 or pipl.stdout.find("pyOpenSSL==0.13.1") == -1
+
+- name: patch w3af to work with recent pyOpenSSL
+  replace: dest="{{ w3af_installdir }}/w3af/core/controllers/dependency_check/requirements.py" regexp="'pyOpenSSL', '0.13.1'" replace="'pyOpenSSL', '16.1.0'" backup=yes
+
+- name: add w3af install dir to path
+  lineinfile: dest=/etc/profile.d/w3af.sh line="export PATH=$PATH:{{ w3af_installdir }}" create=yes
+
+- name: add owasp template script for scan
+  template: "src=w3af_owasp_script.w3af.j2 dest={{ w3af_installdir }}/scripts/w3af_owasp_script.w3af mode=0644 backup=yes"
+

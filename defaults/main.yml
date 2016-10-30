@@ -1,0 +1,26 @@
+---
+
+w3af_installdir: /usr/local/share/w3af
+w3af_release: 1.6.49
+
+
+w3af_scan: false
+w3af_scan_script: w3af_owasp_script.w3af
+w3af_scan_targets_url: "http://127.0.0.1/"
+#w3af_scan_targets_auth_url: "{{ w3af_scan_targets_url }}/login"
+#w3af_scan_targets_check_url: "{{ w3af_scan_targets_url }}/user/admin/"
+w3af_scan_targets_method: "POST"
+w3af_scan_targets_user: "admin"
+w3af_scan_targets_pass: "password"
+w3af_scan_targets_user_field: "user"
+w3af_scan_targets_pass_field: "pass"
+w3af_scan_targets_dataformat: "username=%U&password=%P&Login=Login"
+w3af_scan_output_file: "/tmp/output-w3af.txt"
+#w3af_scan_config: /path/file
+#w3af_scan_audit plugins: [ 'xss', 'sqli' ]
+#w3af_scan_auth:
+
+## fetch files result to orchestrator
+w3af_pull: false
+w3af_pulldir: tmp/
+
