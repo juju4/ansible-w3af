@@ -1,0 +1,18 @@
+---
+
+w3af_deps_pkg:
+  - git
+  - py-pip
+  - py-setuptools
+  - python-dev
+  - build-base
+#  - alpine-sdk
+  - sqlite-dev
+  - openssl-dev
+  - libxml2-dev
+  - libxslt-dev
+  - yaml-dev
+  - libffi-dev
+  - jpeg-dev
+  - clamav
+
