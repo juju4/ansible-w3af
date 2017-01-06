@@ -4,8 +4,17 @@
 #  replace: dest=... regexp='http://moth/w3af/' replace='' backup=yes
 #  replace: dest=... regexp='output-w3af.txt' replace='' backup=yes
 
+- meta: flush_handlers
+
+- name: wait for host/service to be up
+  wait_for: host={{ w3af_scan_targets_host }} port={{ w3af_scan_targets_port }} timeout=300
+
 - name: launch va scan with w3af
   shell: "echo y | {{ w3af_installdir }}/w3af_console -s {{ w3af_installdir }}/scripts/{{ w3af_scan_script }}"
+
+- name: vulnerabilities output
+  command: "grep -i vulnerability {{ w3af_scan_output_file }}"
+  changed_when: false
 
 - name: fetch files to orchestrator
   fetch: "src={{ item }} dest={{ w3af_pulldir }}/"

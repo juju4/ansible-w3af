@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: juju4
-  description: TEMPLATE
+  description: w3af web scanner
   license: BSD
   min_ansible_version: 1.9
   #
