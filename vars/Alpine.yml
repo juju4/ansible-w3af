@@ -15,4 +15,5 @@ w3af_deps_pkg:
   - libffi-dev
   - jpeg-dev
   - clamav
+  - linux-headers
 

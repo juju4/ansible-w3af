@@ -1,2 +1,21 @@
 ---
 
+w3af_deps_pkg:
+  - git
+  - python-pip
+  - python-setuptools
+  - python-devel
+#  - libsqlite3x-devel
+  - sqlite-devel
+  - gcc-c++
+  - gcc
+  - make
+  - libxml2-devel
+  - libxslt-devel
+  - libjpeg-devel
+#  - pyOpenSSL
+  - openssl-devel
+  - libcom_err-devel
+  - libcom_err
+  - libffi-devel
+
