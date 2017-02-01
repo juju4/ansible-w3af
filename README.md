@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/juju4/ansible-w3af.svg?branch=master)](https://travis-ci.org/juju4/ansible-w3af)
+[![Build Status - Master](https://travis-ci.org/juju4/ansible-w3af.svg?branch=master)](https://travis-ci.org/juju4/ansible-w3af)
+[![Build Status - Devel](https://travis-ci.org/juju4/ansible-w3af.svg?branch=devel)](https://travis-ci.org/juju4/ansible-w3af/branches)
 # w3af web scanner ansible role
 
 A simple ansible role to setup w3af web scanner
@@ -10,6 +11,7 @@ http://w3af.org/
 It was tested on the following versions:
  * 1.9
  * 2.0
+ * 2.2
 
 ### Operating systems
 
