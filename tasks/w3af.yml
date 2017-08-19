@@ -47,7 +47,11 @@
 #  when: pipl.stdout.find("lxml==2.3.2") == -1 or pipl.stdout.find("pyOpenSSL==0.13.1") == -1
 
 - name: patch w3af to work with recent pyOpenSSL
-  replace: dest="{{ w3af_installdir }}/w3af/core/controllers/dependency_check/requirements.py" regexp="'pyOpenSSL', '0.13.1'" replace="'pyOpenSSL', '16.1.0'" backup=yes
+  replace:
+    dest: "{{ w3af_installdir }}/w3af/core/controllers/dependency_check/requirements.py"
+    regexp: "'pyOpenSSL', '[0-9]+.[0-9]+.[0-9]+'"
+    replace: "'pyOpenSSL', '16.2.0'"
+    backup: yes
 
 - name: add w3af install dir to path
   lineinfile: dest=/etc/profile.d/w3af.sh line="export PATH=$PATH:{{ w3af_installdir }}" create=yes
