@@ -69,6 +69,8 @@ script:
   # serverspec tests
 #  - 'sudo docker exec --tty "$(cat ${container_id})" /etc/ansible/roles/juju4.w3af/test/integration/default/serverspec/run-local-tests.sh'
 
+  - 'docker exec --tty "$(cat ${container_id})" /usr/local/share/w3af/w3af_console -v'
+
   # Clean up
   - 'sudo docker stop "$(cat ${container_id})"'
 
