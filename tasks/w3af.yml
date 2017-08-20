@@ -35,17 +35,6 @@
   register: out
 #- debug: var=out
 
-- name: check current pip packages
-  command: "pip freeze"
-  changed_when: false
-  register: pipl
-#- debug: var=pipl
-- name: (bad workaround) ensure correct version of some pip packages
-#  command: "pip install pyOpenSSL==0.13.1 lxml==2.3.2"
-  command: "pip install lxml==2.3.2"
-  when: pipl.stdout.find("lxml==2.3.2") == -1
-#  when: pipl.stdout.find("lxml==2.3.2") == -1 or pipl.stdout.find("pyOpenSSL==0.13.1") == -1
-
 - name: patch w3af to work with recent pyOpenSSL
   replace:
     dest: "{{ w3af_installdir }}/w3af/core/controllers/dependency_check/requirements.py"
