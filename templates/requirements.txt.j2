@@ -4,8 +4,6 @@ pytz==2016.6.1
 clamd==1.0.1
 pyclamd==0.3.15
 PyGithub==1.21.0
-GitPython==0.3.2.RC1
-pybloomfiltermmap==0.3.11
 esmre==0.3.1
 phply==0.9.1
 nltk==3.0.1
@@ -19,7 +17,18 @@ pyOpenSSL==16.2.0
 ndg-httpsclient==0.3.3
 pyasn1==0.1.9
 ## lxml is a requirement for mitmproxy too
+{% if w3af_release == '1.6.49' %}
 lxml==2.3.2
+pybloomfiltermmap==0.3.11
+vulndb==0.0.17
+GitPython==0.3.2.RC1
+{% else %}
+{# HEAD #}
+lxml==3.4.4
+pybloomfiltermmap==0.3.14
+vulndb==0.0.19
+GitPython==2.1.3
+{% endif %}
 scapy-real==2.2.0-dev
 guess-language==0.2
 cluster==1.1.1b3
@@ -28,10 +37,12 @@ python-ntlm==1.0.1
 halberd==0.2.4
 darts.util.lru==0.5
 Jinja2==2.7.3
-vulndb==0.0.17
 markdown==2.6.1
 psutil==2.2.1
 mitmproxy==0.13
 ruamel.ordereddict==0.4.8
 Flask==0.10.1
 pyYAML==3.12
+{% if w3af_release == 'HEAD' %}
+termcolor==1.1.0
+{% endif %}
