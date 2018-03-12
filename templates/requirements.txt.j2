@@ -3,7 +3,6 @@
 pip==8.1.2
 pytz==2016.6.1
 clamd==1.0.1
-pyclamd==0.3.15
 PyGithub==1.21.0
 esmre==0.3.1
 phply==0.9.1
@@ -11,18 +10,20 @@ nltk==3.0.1
 stopit==1.1.0
 tblib==0.2.0
 pdfminer==20140328
-futures==2.1.5
 #pyOpenSSL==0.13.1
 pyOpenSSL==16.2.0
 ndg-httpsclient==0.3.3
 pyasn1==0.1.9
 ## lxml is a requirement for mitmproxy too
 {% if w3af_release == '1.6.49' %}
+pyclamd==0.3.15
+futures==2.1.5
 lxml==2.3.2
 pybloomfiltermmap==0.3.11
 vulndb==0.0.17
 GitPython==0.3.2.RC1
 chardet==2.1.1
+Jinja2==2.7.3
 {% else %}
 {# HEAD #}
 lxml==3.4.4
@@ -33,7 +34,13 @@ termcolor==1.1.0
 tldextract==1.7.2
 {# 201710 #}
 chardet==3.0.4
-pebble==4.3.2
+{# 201803 #}
+pyClamd==0.4.0
+futures==3.2.0
+Jinja2==2.10
+ds-store==1.1.2
+pebble==4.3.6
+acora==2.1
 {% endif %}
 scapy-real==2.2.0-dev
 guess-language==0.2
@@ -42,7 +49,6 @@ msgpack-python==0.4.4
 python-ntlm==1.0.1
 halberd==0.2.4
 darts.util.lru==0.5
-Jinja2==2.7.3
 markdown==2.6.1
 psutil==2.2.1
 mitmproxy==0.13
