@@ -21,6 +21,7 @@ provisioner:
   ansible_connection: ssh
 
 platforms:
+  - name: ubuntu-18.04
 ## BUG/FIXME! v2.2: apt module not idempotent - task install w3af dependencies
   - name: ubuntu-16.04
     provisioner:
