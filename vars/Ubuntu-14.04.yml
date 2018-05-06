@@ -15,3 +15,9 @@ w3af_deps_pkg:
   - libjpeg-dev
   - libjpeg8-dev
   - zlib1g-dev
+
+python_sni:
+    - python-dev
+    - python-pip
+    - libffi-dev
+    - libssl-dev

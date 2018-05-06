@@ -3,7 +3,7 @@
 - block:
     - name: ensure python pip is present
       package: name={{ item }} state=present
-      with_items: "{{ python_sni }}"
+      with_items: "{{ python_sni | default([]) }}"
     - include: pip-upgrade.yml
     - name: upgrade python-six to latest with pip - 1.6+ required for ndg-httpsclient
       pip:
