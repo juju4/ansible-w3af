@@ -15,3 +15,5 @@ w3af_deps_pkg:
   - libjpeg-dev
   - clamdscan
 
+w3af_remove_pkg:
+  - python-yaml

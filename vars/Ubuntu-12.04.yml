@@ -16,3 +16,4 @@ w3af_deps_pkg:
   - libjpeg8-dev
   - zlib1g-dev
 
+w3af_remove_pkg: []
