@@ -16,7 +16,7 @@
         version: "{{ item.v }}"
       with_items:
         - { n: cryptography, v: 2.0.3 }
-        - { n: pyopenssl, v: 17.4.0 }
+#        - { n: pyopenssl, v: 17.4.0 }
 
     - name: old python - SNI workaround
       pip: name={{ item }} state=present
