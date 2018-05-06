@@ -17,4 +17,3 @@ w3af_deps_pkg:
   - clamav
   - linux-headers
 
-w3af_remove_pkg: []

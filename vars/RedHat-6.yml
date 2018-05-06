@@ -19,4 +19,3 @@ w3af_deps_pkg:
   - libcom_err
   - libffi-devel
 
-w3af_remove_pkg: []
