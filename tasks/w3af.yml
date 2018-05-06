@@ -4,10 +4,6 @@
   package: name={{ item }} state=present update_cache=yes
   with_items: "{{ w3af_deps_pkg }}"
 
-- name: remove packages with bad interactions (vs pip)
-  package: name={{ item }} state=absent
-  with_items: "{{ w3af_remove_pkg }}"
-
 - name: git clone w3af
   git: repo=https://github.com/andresriancho/w3af.git
        dest="{{ w3af_installdir }}"
@@ -21,6 +17,10 @@
 #  with_items:
 #    - { p: PyOpenSSL, v: 16.1.0 }
 #    - { p: lxml, v: 3.6.4 }
+
+- name: remove packages with bad interactions (vs pip)
+  package: name={{ item }} state=absent
+  with_items: "{{ w3af_remove_pkg }}"
 
 - name: check current pip version
   command: "pip --version"
