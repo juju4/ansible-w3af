@@ -28,6 +28,8 @@
   command: pip install --upgrade pip
   when: pipv.stdout.find("8.1.2") == -1
 
+- import_tasks: python-sni-workaround.yml
+
 - name: push pip requirements.txt
   template: src=requirements.txt.j2 dest={{ w3af_installdir }}/requirements.txt backup=yes
 - name: install w3af pip dependencies

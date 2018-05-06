@@ -1,0 +1,28 @@
+---
+
+- block:
+    - name: ensure python pip is present
+      package: name={{ item }} state=present
+      with_items: "{{ python_sni }}"
+    - include: pip-upgrade.yml
+    - name: upgrade python-six to latest with pip - 1.6+ required for ndg-httpsclient
+      pip:
+        name: six
+        version: 1.6.0
+# 2.1.1: error in cryptography setup command: Invalid environment marker: python_version < '3'
+    - name: use older cryptography, pyopenssl
+      pip:
+        name: "{{ item.n }}"
+        version: "{{ item.v }}"
+      with_items:
+        - { n: cryptography, v: 2.0.3 }
+        - { n: pyopenssl, v: 17.4.0 }
+
+    - name: old python - SNI workaround
+      pip: name={{ item }} state=present
+      with_items:
+        - urllib3
+        - ndg-httpsclient
+        - pyasn1
+  when: ansible_distribution_release == 'trusty' or ansible_distribution_major_version|int <= 6
+
