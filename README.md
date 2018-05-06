@@ -12,10 +12,11 @@ It was tested on the following versions:
  * 1.9
  * 2.0
  * 2.2
+ * 2.5
 
 ### Operating systems
 
-Tested with vagrant on Ubuntu 14.04, Kitchen test with trusty and centos7
+Tested on Ubuntu 14.04, 16.04 and 18.04, Kitchen test with trusty and centos7
 
 ## Example Playbook
 
