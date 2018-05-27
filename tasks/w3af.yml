@@ -18,16 +18,8 @@
 #    - { p: PyOpenSSL, v: 16.1.0 }
 #    - { p: lxml, v: 3.6.4 }
 
-- name: check current pip version
-  command: "pip --version"
-  changed_when: false
-  register: pipv
 
-## does not seem to be handled well by ansible pip module
-- name: upgrade pip to latest
-  command: pip install --upgrade pip
-  when: pipv.stdout.find("8.1.2") == -1
-
+- include: pip-upgrade.yml
 - include: python-sni-workaround.yml
 
 - name: push pip requirements.txt
