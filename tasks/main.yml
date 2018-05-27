@@ -13,6 +13,11 @@
   include_vars: "Alpine.yml"
   when: ansible_os_family == "Alpine"
 
+- debug: var=ansible_os_family
+- debug: var=ansible_distribution_major_version
+- debug: msg="yes"
+  when: ansible_os_family != "RedHat" or ansible_distribution_major_version|int > 7
+
 - include: w3af.yml
 
 - include: w3af-scan.yml
