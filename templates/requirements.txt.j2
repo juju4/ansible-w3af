@@ -43,7 +43,9 @@ acora==2.1
 bravado==9.2.2
 vulndb==0.1.0
 pebble==4.3.8
+{% if ansible_os_family != "RedHat" or ansible_distribution_major_version|int > 7 %}
 diff-match-patch==20121119
+{% endif %}
 lz4==1.1.0
 {% endif %}
 scapy-real==2.2.0-dev
