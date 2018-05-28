@@ -7,7 +7,7 @@
 #
 
 @test "Second run should change nothing" {
-#    skip "not idempotent on all pip modules - pyOpenSSL, lxml, mitmproxy"
+    skip "not idempotent - pip, setuptools update + pip requirements"
     run bash -c "ansible-playbook -i /tmp/kitchen/hosts /tmp/kitchen/default.yml -c local 2>&1 | tee /tmp/idempotency.test | grep -q 'changed=0.*failed=0' && exit 0 || exit 1"
     [ "$status" -eq 0 ]
 }
