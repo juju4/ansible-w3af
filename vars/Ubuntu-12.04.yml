@@ -15,4 +15,5 @@ w3af_deps_pkg:
   - libjpeg-dev
   - libjpeg8-dev
   - zlib1g-dev
+  - npm
 

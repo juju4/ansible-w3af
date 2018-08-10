@@ -18,4 +18,5 @@ w3af_deps_pkg:
   - libcom_err-devel
   - libcom_err
   - libffi-devel
+  - npm
 

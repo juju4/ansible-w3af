@@ -40,6 +40,13 @@
     - { re: "'pyasn1', '[0-9]+.[0-9]+.[0-9]+'", rep: "'pyasn1', '0.1.9'" }
     - { re: "'pyYAML', '[0-9]+.[0-9]+.[0-9]+'", rep: "'pyYAML', '3.12'" }
 
+- name: Install retire node.js package globally
+  npm:
+    name: retire
+    global: yes
+    production: yes
+    state: present
+
 - name: add w3af install dir to path
   lineinfile: dest=/etc/profile.d/w3af.sh line="export PATH=$PATH:{{ w3af_installdir }}" create=yes
 

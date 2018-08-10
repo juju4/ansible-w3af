@@ -16,4 +16,4 @@ w3af_deps_pkg:
   - jpeg-dev
   - clamav
   - linux-headers
-
+  - npm
