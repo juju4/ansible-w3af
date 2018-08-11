@@ -44,7 +44,6 @@
   npm:
     name: retire
     global: yes
-    production: yes
     state: present
 
 - name: Xenial | symlink nodejs to node
