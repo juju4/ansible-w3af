@@ -24,10 +24,35 @@
 
 - name: push pip requirements.txt
   template: src=requirements.txt.j2 dest={{ w3af_installdir }}/requirements.txt backup=yes
-- name: install w3af pip dependencies
-  pip: requirements={{ w3af_installdir }}/requirements.txt
-  register: out
-#- debug: var=out
+
+- block:
+    - name: install w3af pip dependencies
+      pip: requirements={{ w3af_installdir }}/requirements.txt
+      register: out
+    #- debug: var=out
+  when: not w3af_virtualenv
+
+- block:
+    - name: ensure virtualenv is present
+      package:
+        name: python-virtualenv
+        state: present
+    - name: install w3af pip dependencies with virtualenv
+      pip:
+        requirements: "{{ w3af_installdir }}/requirements.txt"
+        virtualenv: "{{ w3af_virtualenv_path }}"
+      register: out
+    #- debug: var=out
+    - name: Ensure using virtualenv python
+      replace:
+        dest: "{{ item }}"
+        regexp: '/usr/bin/env python'
+        replace: "{{ w3af_virtualenv_path }}/bin/python"
+        backup: yes
+      with_items:
+        - "{{ w3af_installdir }}/w3af_console"
+        - "{{ w3af_installdir }}/w3af_gui"
+  when: w3af_virtualenv
 
 - name: patch w3af to work with recent pyOpenSSL
   replace:

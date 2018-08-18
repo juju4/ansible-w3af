@@ -1,6 +1,8 @@
 ---
 
 w3af_installdir: /usr/local/share/w3af
+w3af_virtualenv: true
+w3af_virtualenv_path: /usr/local/share/env-w3af
 w3af_release: HEAD
 #w3af_release: 1.6.49
 
