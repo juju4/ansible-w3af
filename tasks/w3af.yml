@@ -22,6 +22,16 @@
 - include: pip-upgrade.yml
 - include: python-sni-workaround.yml
 
+# from https://github.com/andresriancho/w3af/blob/356b14b975039706f4fd7f4f5db5b114cd75f14e/w3af/core/controllers/ci/install_scripts/install_core_dependencies.sh
+#- name: generate requirements.txt
+#  command: "python -c 'from w3af.core.controllers.dependency_check.dependency_check import dependency_check;dependency_check()'"
+#  args:
+#    chdir: "{{ w3af_installdir }}"
+#    creates: "{{ w3af_installdir }}/requirements.txt"
+#  environment:
+#    PYTHONPATH: "{{ w3af_installdir }}"
+#  ignore_errors: true
+
 - name: push pip requirements.txt
   template: src=requirements.txt.j2 dest={{ w3af_installdir }}/requirements.txt backup=yes
 
