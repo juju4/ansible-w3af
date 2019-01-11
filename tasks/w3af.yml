@@ -24,7 +24,8 @@
 
 # from https://github.com/andresriancho/w3af/blob/356b14b975039706f4fd7f4f5db5b114cd75f14e/w3af/core/controllers/ci/install_scripts/install_core_dependencies.sh
 #- name: generate requirements.txt
-#  command: "python -c 'from w3af.core.controllers.dependency_check.dependency_check import dependency_check;dependency_check()'"
+#  command: >
+#    python -c 'from w3af.core.controllers.dependency_check.dependency_check import dependency_check;dependency_check()'
 #  args:
 #    chdir: "{{ w3af_installdir }}"
 #    creates: "{{ w3af_installdir }}/requirements.txt"
@@ -89,8 +90,14 @@
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
 - name: add w3af install dir to path
-  lineinfile: dest=/etc/profile.d/w3af.sh line="export PATH=$PATH:{{ w3af_installdir }}" create=yes
+  lineinfile:
+    dest: /etc/profile.d/w3af.sh
+    line: "export PATH=$PATH:{{ w3af_installdir }}"
+    create: yes
 
 - name: add owasp template script for scan
-  template: "src=w3af_owasp_script.w3af.j2 dest={{ w3af_installdir }}/scripts/w3af_owasp_script.w3af mode=0644 backup=yes"
-
+  template:
+    src: w3af_owasp_script.w3af.j2
+    dest: "{{ w3af_installdir }}/scripts/w3af_owasp_script.w3af"
+    mode: '0644'
+    backup: yes

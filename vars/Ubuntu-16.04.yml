@@ -15,4 +15,3 @@ w3af_deps_pkg:
   - libjpeg-dev
   - clamdscan
   - npm
-

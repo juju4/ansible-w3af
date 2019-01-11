@@ -22,4 +22,3 @@
     - "{{ w3af_scan_output_file }}"
     - "/root/output-http.txt"
   when: w3af_pull is defined and w3af_pull
-
