@@ -1,7 +1,8 @@
 ---
 
 - name: install w3af dependencies
-  package: name={{ w3af_deps_pkg }} state=present update_cache=yes
+  package: name={{ item }} state=present update_cache=yes
+  with_items: "{{ w3af_deps_pkg }}"
   register: pkg_result
   until: pkg_result is success
 
