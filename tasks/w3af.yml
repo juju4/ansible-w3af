@@ -83,6 +83,7 @@
 - name: Install retire node.js package globally
   npm:
     name: retire
+    version: '2.0.3'
     global: yes
     state: present
   register: pkg_result
