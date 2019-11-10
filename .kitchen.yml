@@ -23,8 +23,6 @@ platforms:
   - name: ubuntu-18.04
 ## BUG/FIXME! v2.2: apt module not idempotent - task install w3af dependencies
   - name: ubuntu-16.04
-    provisioner:
-      ansible_version: 2.1.2.0
   - name: ubuntu-14.04
     provisioner:
       ansible_version: 2.1.2.0
