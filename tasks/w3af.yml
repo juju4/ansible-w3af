@@ -92,13 +92,6 @@
   register: pkg_result
   until: pkg_result is success
 
-- name: Xenial | symlink nodejs to node
-  file:
-    src: /usr/bin/nodejs
-    dest: /usr/bin/node
-    state: link
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
-
 - name: add w3af install dir to path
   lineinfile:
     dest: /etc/profile.d/w3af.sh
