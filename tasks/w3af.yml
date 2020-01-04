@@ -1,17 +1,20 @@
 ---
 
 - name: install w3af dependencies
-  package: name={{ item }} state=present update_cache=yes
-  with_items: "{{ w3af_deps_pkg }}"
+  package:
+    name: "{{ w3af_deps_pkg }}"
+    state: present
+    update_cache: yes
   register: pkg_result
   until: pkg_result is success
 
 - name: git clone w3af
-  git: repo=https://github.com/andresriancho/w3af.git
-       dest="{{ w3af_installdir }}"
-       version="{{ w3af_release }}"
-       force=no
-       update=no
+  git:
+    repo: https://github.com/andresriancho/w3af.git
+    dest: "{{ w3af_installdir }}"
+    version: "{{ w3af_release }}"
+    force: no
+    update: no
 
 ### FIXME! next install still seems to install latest...
 #- name: force uninstall some pip modules to ensure correct version
