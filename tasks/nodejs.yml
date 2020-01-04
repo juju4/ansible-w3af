@@ -16,10 +16,10 @@
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
     state: present
 
-- name: Ensure nodejs ppa is present
+- name: Ensure conflicting nodejs ppa is absent
   apt_repository:
     repo: 'ppa:chris-lea/node.js'
-    state: present
+    state: absent
 
 - name: Ensure nodesource repository is present
   apt_repository:
