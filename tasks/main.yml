@@ -18,6 +18,9 @@
 - debug: msg="yes"
   when: ansible_os_family != "RedHat" or ansible_distribution_major_version|int > 7
 
+- include: nodejs.yml
+  when: ansible_os_family == "Debian"
+
 - include: w3af.yml
 
 - include: w3af-scan.yml

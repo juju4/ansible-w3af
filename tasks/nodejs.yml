@@ -1,0 +1,31 @@
+---
+
+# https://github.com/nodesource/distributions/blob/master/README.md
+
+- name: Check if nodejs dependencies are present
+  package:
+    name:
+      - apt-transport-https
+      - lsb-release
+      - curl
+      - gnupg
+    state: present
+
+- name: Ensure nodejs ppa key is present
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present
+
+- name: Ensure nodejs ppa is present
+  apt_repository:
+    repo: 'ppa:chris-lea/node.js'
+    state: present
+
+- name: Ensure nodesource repository is present
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    filename: nodesource.list
+  with_items:
+    - "deb https://deb.nodesource.com/node_12.x {{ ansible_distribution_release }} main"
+    - "deb-src https://deb.nodesource.com/node_12.x {{ ansible_distribution_release }} main"
