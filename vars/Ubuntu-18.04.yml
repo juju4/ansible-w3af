@@ -8,6 +8,7 @@ w3af_deps_pkg:
   - build-essential
   - libsqlite3-dev
   - libssl-dev
+  - libssl1.0-dev
   - libxml2-dev
   - libxslt1-dev
   - libyaml-dev

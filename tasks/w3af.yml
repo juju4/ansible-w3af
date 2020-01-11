@@ -83,6 +83,15 @@
     - { re: "'pyasn1', '[0-9]+.[0-9]+.[0-9]+'", rep: "'pyasn1', '0.1.9'" }
     - { re: "'pyYAML', '[0-9]+.[0-9]+.[0-9]+'", rep: "'pyYAML', '3.12'" }
 
+- name: Ubuntu | patch w3af to work with upstream nodejs
+  replace:
+    dest: "{{ w3af_installdir }}/w3af/core/controllers/dependency_check/platforms/ubuntu1204.py"
+    regexp: "{{ item.re }}"
+    replace: "{{ item.rep }}"
+    backup: yes
+  with_items:
+    - { re: " 'npm', ", rep: " 'nodejs', " }
+
 - name: Install retire node.js package globally
   npm:
     name: retire
