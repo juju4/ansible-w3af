@@ -55,6 +55,14 @@
         state: present
       register: pkg_result
       until: pkg_result is success
+    - name: install setuptools pip dependency with virtualenv - xenial/python2
+      pip:
+        name: setuptools
+        version: 44.0.0
+        virtualenv: "{{ w3af_virtualenv_path }}"
+      register: pkg_result
+      until: pkg_result is success
+      when: ansible_distribution_release == 'xenial'
     - name: install w3af pip dependencies with virtualenv
       pip:
         requirements: "{{ w3af_installdir }}/requirements.txt"
