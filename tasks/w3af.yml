@@ -27,7 +27,7 @@
 - name: upgrade pip
   pip:
     name: pip
-    version: 20.0.2
+    version: "{{ w3af_pip_version | default('20.0.2') }}"
   when: ansible_distribution_release == 'xenial' or ansible_distribution_major_version == '7'
 
 # from https://github.com/andresriancho/w3af/blob/356b14b975039706f4fd7f4f5db5b114cd75f14e/w3af/core/controllers/ci/install_scripts/install_core_dependencies.sh
@@ -66,7 +66,7 @@
     - name: install pip with virtualenv - xenial/python2
       pip:
         name: pip
-        version: 20.0.2
+        version: "{{ w3af_pip_version | default('20.0.2') }}"
         virtualenv: "{{ w3af_virtualenv_path }}"
         virtualenv_python: "{{ w3af_python_bin | default('python') }}"
       register: pkg_result

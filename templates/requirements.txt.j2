@@ -1,6 +1,6 @@
 {{ ansible_managed | comment }}
 ## https://github.com/andresriancho/w3af/blob/master/w3af/core/controllers/dependency_check/requirements.py
-pip==8.1.2
+pip=={{ w3af_pip_version | default('20.0.2') }}
 pytz==2016.6.1
 clamd==1.0.1
 PyGithub==1.21.0
