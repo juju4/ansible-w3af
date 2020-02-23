@@ -63,6 +63,15 @@
         state: present
       register: pkg_result
       until: pkg_result is success
+    - name: install pip with virtualenv - xenial/python2
+      pip:
+        name: pip
+        version: 20.0.2
+        virtualenv: "{{ w3af_virtualenv_path }}"
+        virtualenv_python: "{{ w3af_python_bin | default('python') }}"
+      register: pkg_result
+      until: pkg_result is success
+      when: ansible_distribution_release == 'xenial'
     - name: install setuptools pip dependency with virtualenv - xenial/python2
       pip:
         name: setuptools
