@@ -2,9 +2,10 @@
 
 w3af_deps_pkg:
   - git
-  - python-pip
-  - python-setuptools
-  - python2.7-dev
+  - python3
+  - python3-pip
+  - python3-setuptools
+  - python3-dev
   - build-essential
   - libsqlite3-dev
   - libssl1.0-dev
@@ -15,3 +16,6 @@ w3af_deps_pkg:
   - libjpeg-dev
   - clamdscan
   - nodejs
+
+w3af_python_bin: python3
+w3af_python_pip: pip3

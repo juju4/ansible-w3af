@@ -2,9 +2,9 @@
 
 w3af_deps_pkg:
   - git
-  - python-pip
-  - python-setuptools
-  - python-devel
+  - python36
+  - python36-pip
+  - python36-devel
 #  - libsqlite3x-devel
   - sqlite-devel
   - gcc-c++
@@ -19,3 +19,6 @@ w3af_deps_pkg:
   - libcom_err
   - libffi-devel
   - npm
+
+w3af_python_bin: python3.6
+w3af_python_pip: pip3.6

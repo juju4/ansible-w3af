@@ -39,11 +39,15 @@
 #  ignore_errors: true
 
 - name: push pip requirements.txt
-  template: src=requirements.txt.j2 dest={{ w3af_installdir }}/requirements.txt backup=yes
+  template:
+     src: requirements.txt.j2
+     dest: "{{ w3af_installdir }}/requirements.txt"
+     backup: yes
 
 - block:
     - name: install w3af pip dependencies
       pip: requirements={{ w3af_installdir }}/requirements.txt
+      executable: "{{ w3af_python_pip | default('pip') }}"
       register: pkg_result
       until: pkg_result is success
   when: not w3af_virtualenv
@@ -60,6 +64,7 @@
         name: setuptools
         version: 44.0.0
         virtualenv: "{{ w3af_virtualenv_path }}"
+        virtualenv_python: "{{ w3af_python_bin | default('python') }}"
       register: pkg_result
       until: pkg_result is success
       when: ansible_distribution_release == 'xenial'
@@ -67,6 +72,7 @@
       pip:
         requirements: "{{ w3af_installdir }}/requirements.txt"
         virtualenv: "{{ w3af_virtualenv_path }}"
+        virtualenv_python: "{{ w3af_python_bin | default('python') }}"
       register: pkg_result
       until: pkg_result is success
     - name: Ensure using virtualenv python
