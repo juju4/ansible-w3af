@@ -46,8 +46,9 @@
 
 - block:
     - name: install w3af pip dependencies
-      pip: requirements={{ w3af_installdir }}/requirements.txt
-      executable: "{{ w3af_python_pip | default('pip') }}"
+      pip:
+        requirements: "{{ w3af_installdir }}/requirements.txt"
+        executable: "{{ w3af_python_pip | default('pip') }}"
       register: pkg_result
       until: pkg_result is success
   when: not w3af_virtualenv
