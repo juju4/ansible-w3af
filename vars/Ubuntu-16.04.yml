@@ -20,3 +20,4 @@ w3af_deps_pkg:
 
 w3af_python_bin: python3
 w3af_python_pip: pip3
+w3af_pdfminer_version: 20191016
