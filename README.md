@@ -79,6 +79,8 @@ w3af requires pyOpenSSL==0.13.1 which does not build on recent systems
 https://github.com/pyca/pyopenssl/issues/276
 latest release (16.1.0) is not affected.
 
+* [Upstream Python3 support pending](https://github.com/andresriancho/w3af/issues/17866)
+
 ## License
 
 BSD 2-clause
