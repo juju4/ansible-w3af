@@ -20,3 +20,5 @@ w3af_deps_pkg:
   - libcom_err
   - libffi-devel
   - npm
+
+w3af_python_bin: python2

@@ -3,12 +3,11 @@
 w3af_deps_pkg:
   - git
   - python2
-  - python-pip
   - python-setuptools
   - python2-dev
   - build-essential
   - libsqlite3-dev
-  - libssl1.0-dev
+  - libssl-dev
   - libxml2-dev
   - libxslt1-dev
   - libyaml-dev
@@ -16,3 +15,5 @@ w3af_deps_pkg:
   - libjpeg-dev
   - clamdscan
   - nodejs
+
+w3af_python_bin: python2
