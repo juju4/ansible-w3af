@@ -58,6 +58,15 @@
         state: present
       register: pkg_result
       until: pkg_result is success
+      when: not (ansible_os_family == "RedHat" and ansible_distribution_major_version|int == 8)
+    - name: RedHat8 | ensure virtualenv is present
+      pip:
+        name: virtualenv
+        state: present
+        executable: pip2
+      register: pkg_result
+      until: pkg_result is success
+      when: (ansible_os_family == "RedHat" and ansible_distribution_major_version|int == 8)
     - name: install pip with virtualenv - xenial/python2
       pip:
         name: pip
