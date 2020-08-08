@@ -35,7 +35,7 @@
       get_url:
         url: https://bootstrap.pypa.io/get-pip.py
         dest: /usr/local/bin/get-pip.py
-        checksum: 'sha256:b3153ec0cf7b7bbf9556932aa37e4981c35dc2a2c501d70d91d2795aa532be79'
+        checksum: 'sha256:d4d62a0850fe0c2e6325b2cc20d818c580563de5a2038f917e3cb0e25280b4d1'
         mode: '0600'
     - name: Focal | install pip2
       command: python2 /usr/local/bin/get-pip.py pip==20.1.1
