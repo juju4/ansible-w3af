@@ -1,9 +1,15 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+# DEPRECATED/LOOKING FOR MAINTAINERS -> to be archived soon
+
 [![Build Status - Master](https://travis-ci.org/juju4/ansible-w3af.svg?branch=master)](https://travis-ci.org/juju4/ansible-w3af)
 [![Build Status - Devel](https://travis-ci.org/juju4/ansible-w3af.svg?branch=devel)](https://travis-ci.org/juju4/ansible-w3af/branches)
 # w3af web scanner ansible role
 
 A simple ansible role to setup w3af web scanner
 http://w3af.org/
+
+While not officially umaintained, w3af is still missing python3 support.
+It is recommended to look for alternatives like nuclei.
 
 ## Requirements & Dependencies
 
